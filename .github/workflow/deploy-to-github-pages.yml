@@ -4,14 +4,6 @@ name: Build and deploy to GitHub Pages
 on:
   push:
     branches: ["master"]
-  # remove after the PR: https://github.com/WonderliP/mvsTicketTracker/pull/4 is merged
-  pull_request:
-    branches:
-      - master
-    types:
-      - opened
-      - synchronize  # For updates to the PR
-      - closed
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
