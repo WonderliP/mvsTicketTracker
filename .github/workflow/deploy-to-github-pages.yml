@@ -5,6 +5,14 @@ on:
   push:
     branches: ["master"]
 
+  pull_request:
+    branches:
+      - master
+    types:
+      - opened
+      - synchronize  # For updates to the PR
+      - closed
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -36,7 +44,9 @@ jobs:
       run: npm install
     - name: Prepare static
       run: |
+        echo "before build"
         npm run build
+        echo $?
         cp ./static/* ./build
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
