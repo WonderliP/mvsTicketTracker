@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
 
-const initialOffices = [
-  {
-    id_offices: 104,
-    offices_name: 'Сервісний центр МВС № 5943',
-    offices_addr:
-      '42700, \u043c. \u041e\u0445\u0442\u0438\u0440\u043a\u0430, \u0432\u0443\u043b. \u041a\u0438\u0457\u0432\u0441\u044c\u043a\u0430, 164\u0412',
-    lang: '50.31312318957503',
-    long: '34.87187628105959',
-    cnt: 0,
-    icnt: 0,
-    sts: 4,
-  },
-];
+// const initialOffices = [
+//   {
+//     id_offices: 104,
+//     offices_name: 'Сервісний центр МВС № 5943',
+//     offices_addr:
+//       '42700, \u043c. \u041e\u0445\u0442\u0438\u0440\u043a\u0430, \u0432\u0443\u043b. \u041a\u0438\u0457\u0432\u0441\u044c\u043a\u0430, 164\u0412',
+//     lang: '50.31312318957503',
+//     long: '34.87187628105959',
+//     cnt: 0,
+//     icnt: 0,
+//     sts: 4,
+//   },
+// ];
 
 function App() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen] = useState(true);
   const [offices, setOffices] = useState([]);
   const [selectedOffice, setSelectedOffice] = useState({});
 
