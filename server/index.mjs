@@ -1,5 +1,6 @@
 import express from 'express';
 import fetch, { Headers } from 'node-fetch';
+
 const app = express();
 const port = 3000;
 
@@ -8,13 +9,14 @@ const port = 3000;
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
 // replace this value from your session
-const COOKIE_VALUE =
-  '_ga=GA1.3.1289099717.1700822633; _ga_3GVV2WPF7F=GS1.3.1700822633.1.0.1700822633.0.0.0; WEBCHSID2=vd30jb8rjoe2rb1bdhb9qg9oa3; _identity=7272985e31cb7b84df34fae71ef3552d47b7002d276f601719e2003621c6cc7ea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A20%3A%22%5B1407282%2Cnull%2C28800%5D%22%3B%7D; _csrf=798c03d50da720d41868c14bde2bababe9ebc9cc4922f210c7acee590e3a8e0ca%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22A0Hk6GvLu0ZRcPEaevfjEgj2mglhLIjJ%22%3B%7D';
+const COOKIE_VALUE = '';
+
 // Define a single endpoint
 app.get('/api/hello', async (req, res) => {
   try {
     // Make a fetch request to an example API (you can replace this URL with your desired API)
     var myHeaders = new Headers();
+
     myHeaders.append(
       'Accept',
       'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
