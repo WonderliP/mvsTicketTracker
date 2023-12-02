@@ -27,11 +27,14 @@
 <script>
   (function updateBaseUrl(linkElement) {
     const currentUrl = window.location.href;
+    // since this page is named about, we need to remove it from the baseUrl so path to main.js and main.css file will be correct
+    // example: https://some-base-url.com/about -> https://some-base-url.com; https://some-base-url.com/main.js
+    const currentUrlWithoutPageName = currentUrl.replace('/about', '');
     linkElement.setAttribute(
       'href',
       linkElement
         .getAttribute('href')
-        .replace(/http:\/\/127\.0\.0\.1:8080/g, encodeURIComponent(currentUrl))
+        .replace(/http:\/\/127\.0\.0\.1:8080/g, encodeURIComponent(currentUrlWithoutPageName))
     )
   })(document.querySelector('.bookmarklet-link'));
 </script>
