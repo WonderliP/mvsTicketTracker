@@ -1,7 +1,6 @@
-import express from 'express'
-import fetch, {
-  Headers
-} from 'node-fetch'
+import express from 'express';
+import fetch, { Headers } from 'node-fetch';
+
 const app = express();
 const port = 3000;
 
@@ -10,24 +9,28 @@ const port = 3000;
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
 // replace this value from your session
-const COOKIE_VALUE = "";
+const COOKIE_VALUE = '';
 
 // Define a single endpoint
 app.get('/api/hello', async (req, res) => {
   try {
     // Make a fetch request to an example API (you can replace this URL with your desired API)
     var myHeaders = new Headers();
-    myHeaders.append("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8");
-    myHeaders.append("Accept-Language", "en-US,en;q=0.5");
-    myHeaders.append("Accept-Encoding", "gzip, deflate, br");
-    myHeaders.append("Referer", "https://eq.hsc.gov.ua/site/step_pe?");
-    myHeaders.append("Connection", "keep-alive");
-    myHeaders.append("Cookie", COOKIE_VALUE);
-    myHeaders.append("Upgrade-Insecure-Requests", "1");
-    myHeaders.append("Sec-Fetch-Dest", "document");
-    myHeaders.append("Sec-Fetch-Mode", "navigate");
-    myHeaders.append("Sec-Fetch-Site", "same-origin");
-    myHeaders.append("Sec-Fetch-User", "?1");
+
+    myHeaders.append(
+      'Accept',
+      'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    );
+    myHeaders.append('Accept-Language', 'en-US,en;q=0.5');
+    myHeaders.append('Accept-Encoding', 'gzip, deflate, br');
+    myHeaders.append('Referer', 'https://eq.hsc.gov.ua/site/step_pe?');
+    myHeaders.append('Connection', 'keep-alive');
+    myHeaders.append('Cookie', COOKIE_VALUE);
+    myHeaders.append('Upgrade-Insecure-Requests', '1');
+    myHeaders.append('Sec-Fetch-Dest', 'document');
+    myHeaders.append('Sec-Fetch-Mode', 'navigate');
+    myHeaders.append('Sec-Fetch-Site', 'same-origin');
+    myHeaders.append('Sec-Fetch-User', '?1');
 
     var requestOptions = {
       method: 'GET',
@@ -35,7 +38,10 @@ app.get('/api/hello', async (req, res) => {
       redirect: 'follow',
     };
 
-    const text = await fetch("https://eq.hsc.gov.ua/site/step1?value=56&subid=13", requestOptions)
+    const text = await fetch(
+      'https://eq.hsc.gov.ua/site/step1?value=56&subid=13',
+      requestOptions
+    )
       .then(response => response.text())
       .catch(error => console.log('error', error));
 
