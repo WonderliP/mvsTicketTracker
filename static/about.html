@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk-UA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mvsTicketTracker</title>
+</head>
+<body>
+  <main>
+    <h1>mvsTicketTracker - автоматичний трекінг талонів в сервісний центр</h1>
+    <p>
+      mvsTicketTracker - це <a href="https://uk.wikipedia.org/wiki/%D0%91%D1%83%D0%BA%D0%BC%D0%B0%D1%80%D0%BA%D0%BB%D0%B5%D1%82">букмарклет</a>, який дозволяє запустити процес автоматичного трекінгу талону. 
+      TBD
+    </p>
+    <div class="bookmarklet">
+      <a
+        class="bookmarklet-link"
+        href="__SCRIPT_CONTENT__"
+        onclick="alert(this.nextElementSibling.textContent); return false;"
+      >
+        mvsTicketTracker
+      </a>
+      <p class="bookmarklet-desc">Перетягніть цю кнопку до ваших букмарків в браузері</p>
+    </div>
+  </main>
+</body>
+<script>
+  (function updateBaseUrl(linkElement) {
+    const currentUrl = window.location.href;
+    linkElement.setAttribute(
+      'href',
+      linkElement
+        .getAttribute('href')
+        .replace(/http:\/\/127\.0\.0\.1:8080/g, encodeURIComponent(currentUrl))
+    )
+  })(document.querySelector('.bookmarklet-link'));
+</script>
+
+<style>
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+.bookmarklet {
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookmarklet-link {
+  border: 0.1em solid #CCCCCC;
+  border-radius: 1em;
+  padding: 0.6em 1em 0.4em;
+}
+</style>
+</html>

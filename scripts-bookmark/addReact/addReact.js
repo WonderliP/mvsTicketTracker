@@ -25,5 +25,18 @@ javascript:(function () {
     document.body.appendChild(script);
   }
 
+  function loadLink(options) {
+    const { href, rel } = options || {};
+    const link = document.createElement('link');
+    if (href) {
+      link.href = href;
+    }
+    if (rel) {
+      link.rel = rel;
+    }
+    document.body.appendChild(link);
+  }
+
   loadScript({ src:'http://127.0.0.1:8080/static/js/main.js' });
+  loadLink({ href:'http://127.0.0.1:8080/static/css/main.css', rel: 'stylesheet' });
 })();

@@ -26,18 +26,35 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
         node-version-file: .nvmrc
+
     - name: Setup Pages
       uses: actions/configure-pages@v3
+
     - name: Install dependencies
       run: npm install
-    - name: Prepare static
+
+    - name: Build React
       run: |
         npm run build
-        cp ./static/* ./build
+
+    - name: Prepare static content
+      env:
+        STATIC_HTML_DIR_PATH: static
+        BOOKMARKLET_FILE: scripts-bookmark/addReact/addReact.js
+        ABOUT_HTML_FILE_NAME: about.html
+      run: |
+        BOOKMARKLET_CONTENT=$(cat ${BOOKMARKLET_FILE} | tr -s '\n' ' ')
+        ABOUT_HTML_FILE="${STATIC_HTML_DIR_PATH}/${ABOUT_HTML_FILE_NAME}"
+
+        sed -i "s/__SCRIPT_CONTENT__/${BOOKMARKLET_CONTENT}#g" ${ABOUT_HTML_FILE}
+
+        cp ${STATIC_HTML_DIR_PATH}/* ./build
+
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
       with:
