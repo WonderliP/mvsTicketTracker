@@ -51,7 +51,7 @@ jobs:
         BOOKMARKLET_CONTENT=$(cat ${BOOKMARKLET_FILE} | tr -s '\n' ' ')
         ABOUT_HTML_FILE="${STATIC_HTML_DIR_PATH}/${ABOUT_HTML_FILE_NAME}"
 
-        sed -i "s/__SCRIPT_CONTENT__/${BOOKMARKLET_CONTENT}#g" ${ABOUT_HTML_FILE}
+        sed -i "s#__SCRIPT_CONTENT__#${BOOKMARKLET_CONTENT}#g" ${ABOUT_HTML_FILE}
 
         cp ${STATIC_HTML_DIR_PATH}/* ./build
 
