@@ -1,3 +1,5 @@
+const CopyPlugin = require("copy-webpack-plugin");
+const fs = require('fs');
 
 module.exports = {
   // The Webpack config to use when compiling your react app for development or production.
@@ -8,6 +10,21 @@ module.exports = {
       }
       config.output.filename = 'static/js/[name].js'
       config.output.publicPath = `https://${process.env.HOST}:${process.env.PORT}/`;
+
+      config.plugins.push(new CopyPlugin({
+        patterns: [
+          {
+            from: './static/about.html',
+            transform(content) {
+              const bookmarkletContent = fs.readFileSync('scripts-bookmark/addReact/addReact.js', 'utf8')
+                .replace(/\r?\n|\r/g, '');
+              return content
+                .toString()
+                .replace('__SCRIPT_CONTENT__', bookmarkletContent)
+            },
+          }
+        ],
+      }))
 
       return config;
     }
@@ -57,7 +74,7 @@ module.exports = {
       const config = configFunction(proxy, allowedHost);
 
       config.devMiddleware = {
-        writeToDisk: false
+        writeToDisk: true
       }
 
       return config;
