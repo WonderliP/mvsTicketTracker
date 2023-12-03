@@ -21,6 +21,7 @@ module.exports = {
               return content
                 .toString()
                 .replace('__SCRIPT_CONTENT__', bookmarkletContent)
+                .replace('mvsTicketTracker-v1', 'mvsTicketTracker-dev')
             },
           }
         ],

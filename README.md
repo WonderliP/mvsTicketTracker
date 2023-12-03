@@ -2,20 +2,22 @@
 
 ## Setup for local development
 
-- build the React app
+- run React in dev mode
+
 ```bash
-npm run build
+npm run dev
 ```
 
-- run a local web-server
-```bash
-npm run serve:static
-```
+The browser probably will show `Warning: Potential Security Risk Ahead`. You need to press on `Accept the Risk and Continue`(the text may differ) button: 
 
-- add and run the script that adds the built app to the HTML page
 
-The script is located [here](./src/addReact/addReact.js).  
 
-The script can be added as a bookmark. 
+NOTE: the following steps are required only for the first run
 
-For testing purpose, the script can be tested on a local HTML page - [index.html](./src/addReact/index.html).
+- navigate to the `/about.html` page
+
+For example, the app runs on `https://192.168.0.108:3000` then go to `https://192.168.0.108:3000/about.html`
+
+- add the bookmarklet
+
+- run the bookmarklet on the required page
