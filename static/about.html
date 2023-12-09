@@ -29,7 +29,10 @@
     const currentUrl = window.location.href;
     // since this page is named about, we need to remove it from the baseUrl so path to main.js and main.css file will be correct
     // example: https://some-base-url.com/about -> https://some-base-url.com; https://some-base-url.com/main.js
-    const currentUrlWithoutPageName = currentUrl.replace('/about', '');
+    const currentUrlWithoutPageName = currentUrl
+      .replace('/about.html', '')
+      .replace('/about', '');
+
     linkElement.setAttribute(
       'href',
       linkElement
